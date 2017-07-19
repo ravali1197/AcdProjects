@@ -10,13 +10,13 @@ import javax.swing.plaf.metal.*;
 
 public class BankSystem extends JFrame implements ActionListener, ItemListener {
 
-	//Main Place on Form where All Child Forms will Shown.
+	
 	private JDesktopPane desktop = new JDesktopPane ();
 
-	//For Program's MenuBar.
+	
 	private JMenuBar bar;
 
-	//All the Main Menu of the Program.
+	
 	private JMenu mnuFile, mnuEdit, mnuView, mnuOpt, mnuWin, mnuHelp;
 
 	private JMenuItem addNew, printRec, end;				//File Menu Options.
@@ -26,80 +26,59 @@ public class BankSystem extends JFrame implements ActionListener, ItemListener {
 	private JMenuItem close, closeAll;					//Window Menu Options.
 	private	JMenuItem content, keyHelp, about;				//Help Menu Options.
 
-	//PopupMenu of Program.
+	
 	private JPopupMenu popMenu = new JPopupMenu ();
 
-	//MenuItems for PopupMenu of the Program.
+	
 	private JMenuItem open, report, dep, with, del, find, all;
 
-	//For Program's ToolBar.
+	
 	private	JToolBar toolBar;
 
-	//For ToolBar's Button.
+	
 	private	JButton btnNew, btnDep, btnWith, btnRec, btnDel, btnSrch, btnHelp, btnKey;
 
-	//Main Form StatusBar where Program's Name & Welcome Message Display.
-	private JPanel statusBar = new JPanel ();
-
-	//Labels for Displaying Program's Name & saying Welcome to Current User on StatusBar.
+		private JPanel statusBar = new JPanel ();
 	private JLabel welcome;
 	private JLabel author;
 
-	//Making the LookAndFeel Menu.
 	private String strings[] = {"1. Metal", "2. Motif", "3. Windows"};
 	private UIManager.LookAndFeelInfo looks[] = UIManager.getInstalledLookAndFeels ();
 	private ButtonGroup group = new ButtonGroup ();
 	private JRadioButtonMenuItem radio[] = new JRadioButtonMenuItem[strings.length];
 
-	//Getting the Current System Date.
 	private java.util.Date currDate = new java.util.Date ();
 	private SimpleDateFormat sdf = new SimpleDateFormat ("dd MMMM yyyy", Locale.getDefault());
 	private String d = sdf.format (currDate);
 
-	//Following all Variables are use in BankSystem's IO's.
 
-	//Variable use in Reading the BankSystem Records File & Store it in an Array.
 	private int count = 0;
 	private int rows = 0;
 	private	int total = 0;
-
-	//String Type Array use to Load Records From File.
 	private String records[][] = new String [500][6];
 
-	//Variable for Reading the BankSystem Records File.
 	private FileInputStream fis;
 	private DataInputStream dis;
 
-	//Constructor of The Bank Program to Iniatilize all Variables of Program.
 
 	public BankSystem () {
 
-		//Setting Program's Title.
 		super ("BankSystem");
 
 		UIManager.addPropertyChangeListener (new UISwitchListener ((JComponent)getRootPane()));
-
-		//Creating the MenuBar.
 		bar = new JMenuBar ();
 
-		//Setting the Main Window of Program.
 		setIconImage (getToolkit().getImage ("Images/Bank.gif"));
 		setSize (700, 550);
 		setJMenuBar (bar);
-
-		//Closing Code of Main Window.
 		addWindowListener (new WindowAdapter () {
 			public void windowClosing (WindowEvent we) {
 				quitApp ();
 			}
 		}
 		);
-
-		//Setting the Location of Application on Screen.
 		setLocation((Toolkit.getDefaultToolkit().getScreenSize().width  - getWidth()) / 2,
 			(Toolkit.getDefaultToolkit().getScreenSize().height - getHeight()) / 2);
-
-		//Creating the MenuBar Items.
 		mnuFile = new JMenu ("File");
 		mnuFile.setMnemonic ((int)'F');
 		mnuEdit = new JMenu ("Edit");
@@ -659,13 +638,13 @@ public class BankSystem extends JFrame implements ActionListener, ItemListener {
 	String makeRecordPrint (int rec) {
 
 		String data;
-		String data0 = "               BankSystem [Pvt] Limited.               \n";	//Page Title.
+		String data0 = "               BankSystem               \n";	//Page Title.
 		String data1 = "               Customer Balance Report.              \n\n";	//Page Header.
 		String data2 = "  Account No.:       " + records[rec][0] + "\n";
 		String data3 = "  Customer Name:     " + records[rec][1] + "\n";
 		String data4 = "  Last Transaction:  " + records[rec][2] + ", " + records[rec][3] + ", " + records[rec][4] + "\n";
 		String data5 = "  Current Balance:   " + records[rec][5] + "\n\n";
-		String data6 = "          Copyright  2003 Muhammad Wasif Javed.\n";	//Page Footer.
+		String data6 = "   Thank you";	//Page Footer.
 		String sep0 = " -----------------------------------------------------------\n";
 		String sep1 = " -----------------------------------------------------------\n";
 		String sep2 = " -----------------------------------------------------------\n";
