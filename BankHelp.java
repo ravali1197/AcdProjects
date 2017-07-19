@@ -10,7 +10,7 @@ public class BankHelp extends JInternalFrame {
 
 	public BankHelp (String title, String filename) {
 
-		// super(Title, Resizable, Closable, Maximizable, Iconifiable)
+		
 		super (title, false, true, false, true);
 		setSize (500, 350);
 
